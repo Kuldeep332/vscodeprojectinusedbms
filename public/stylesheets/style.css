@@ -1,0 +1,91 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "gilroy";
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+#main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+#left{
+  width: 20%;
+  padding: 10px;
+  height: 100%;
+  background-color: #a6a5a5;
+}
+#right{
+  width: 80%;
+  height: 100%;
+  background-color: rgba(39, 57, 48, 0.667);
+}
+#folder{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#files{
+  /* display: flex; */
+  /* margin-top: 20px; */
+
+}
+#files{
+margin-top: 10px;
+
+}
+.icon{
+  display: flex;
+  gap: 10px;
+}
+
+.filename{
+  display: flex;
+  align-items: baseline;
+  /* width: 100%; */
+  /* background-color: red; */
+  /* margin-top: 10px; */
+  justify-content: space-between;
+}
+
+.filename i{
+  opacity: 0;
+}
+#gg i{
+  opacity: 1;
+}
+#gg{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.filename:hover i {
+  opacity: 1;
+}
+#rig{
+  background-color: #A6A5A5;
+  width:10rem;
+  /* margin: 2px; */
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 100;
+  display: flex;
+  font-family: "gilroy";
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+}
+#rig i{
+  font-size: 23px;
+}
+#fn h3{
+  font-size: 25px;
+}
+#gg i{
+  color: #F7B734;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div id="main">
+    <div id="left">
+      <div id="folder">
+        <div id="fn">
+          <h3><%= folder %></h3>
+        </div>
+        <div class="icon">
+          <i  id="j" class="ri-file-fill"></i>
+          <i  id="A" class="ri-folder-fill"></i>
+          <a style="text-decoration: none;" href="/closeback">  <i class="ri-refresh-line"></i></a>
+
+        </div>
+      </div>
+      <form action="abc">
+        <input id="h" style="display: none;" type="text" name="o" placeholder="new file">
+      </form>
+      <form action="abcd">
+        <input id="A1" style="display: none;" type="text" name="o1" placeholder="new folder">
+      </form>
+      <% file.forEach(function(fill) { %>
+        <div id="files">
+         
+        
+        <div class="filename">
+        
+         <div id="gg">
+          <%if(fill.isDirectory()){%>
+            <i class="ri-folder-fill"></i>
+          <% } else {%>
+          <i class="ri-file-fill"></i>
+          <% } %>
+          <!-- <h3><%= fill.name %></h3> -->
+          <a style="text-decoration: none; color: black; font-size: 25px;" href="/newpage/<%= fill.name%>"><%=fill.name%></a>
+</div>
+          
+          <div class="icon">
+            <i class="ri-pencil-fill"></i>
+       <% if (fill.isDirectory()) { %>
+        <a href="/delete/folder/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
+      <% } else { %>
+        <a href="/delete/file/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
+      <% } %>
+      
+
+            
+            
+                      </div>
+        </div>
+      </div >
+
+      <%})%>
+    </div>
+    <div id="right"></div>
+  </div>
+  <script>
+document.querySelector("#j").addEventListener("click",function(){
+  closeBtns();
+
+  document.querySelector("#h").style.display="initial"
+})
+document.querySelector("#A").addEventListener("click",function(){
+  closeBtns();
+
+  document.querySelector("#A1").style.display="initial"
+})
+const closeBtns = ()=>{
+    document.querySelector("#h").style.display = "none";
+    document.querySelector("#A1").style.display = "none";
+}
+  </script>
+</body>
+</html>
