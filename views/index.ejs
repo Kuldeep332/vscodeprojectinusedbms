@@ -7,8 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <style id="theme-style">
+    body.light-mode {
+      background-color: #fff;
+      color: #000;
+    }
+
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Add more styles as needed for different elements */
+  </style>
+
+  <style>
+    #toggle-mode {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #toggle-mode.light-mode {
+      background-color: #000;
+      color: #fff;
+    }
+
+    #toggle-mode.dark-mode {
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
 </head>
-<body>
+<body class="light-mode">
+  <button id="toggle-mode">Toggle Dark/Light Mode</button>
+
   <div id="main">
     <div id="left">
       <div id="folder">
@@ -16,10 +53,9 @@
           <h3><%= folder %></h3>
         </div>
         <div class="icon">
-          <i  id="j" class="ri-file-fill"></i>
-          <i  id="A" class="ri-folder-fill"></i>
-          <a style="text-decoration: none;" href="/closeback">  <i class="ri-refresh-line"></i></a>
-
+          <i id="j" class="ri-file-fill"></i>
+          <i id="A" class="ri-folder-fill"></i>
+          <a style="text-decoration: none;" href="/closeback"><i class="ri-refresh-line"></i></a>
         </div>
       </div>
       <form action="abc">
@@ -30,54 +66,69 @@
       </form>
       <% file.forEach(function(fill) { %>
         <div id="files">
-         
-        
-        <div class="filename">
-        
-         <div id="gg">
-          <%if(fill.isDirectory()){%>
-            <i class="ri-folder-fill"></i>
-          <% } else {%>
-          <i class="ri-file-fill"></i>
-          <% } %>
-          <!-- <h3><%= fill.name %></h3> -->
-          <a style="text-decoration: none; color: black; font-size: 25px;" href="/newpage/<%= fill.name%>"><%=fill.name%></a>
-</div>
-          
-          <div class="icon">
-            <i class="ri-pencil-fill"></i>
-       <% if (fill.isDirectory()) { %>
-        <a href="/delete/folder/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
-      <% } else { %>
-        <a href="/delete/file/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
-      <% } %>
-      
-
-            
-            
-                      </div>
+          <div class="filename">
+            <div id="gg">
+              <% if(fill.isDirectory()) { %>
+                <i class="ri-folder-fill"></i>
+              <% } else { %>
+                <i class="ri-file-fill"></i>
+              <% } %>
+              <a style="text-decoration: none; color: black; font-size: 25px;" href="/newpage/<%= fill.name %>"><%= fill.name %></a>
+            </div>
+            <div class="icon">
+              <i class="ri-pencil-fill"></i>
+              <% if (fill.isDirectory()) { %>
+                <a href="/delete/folder/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
+              <% } else { %>
+                <a href="/delete/file/<%= fill.name %>"><i class="ri-delete-bin-line"></i></a>
+              <% } %>
+            </div>
+          </div>
         </div>
-      </div >
-
-      <%})%>
+      <% }) %>
     </div>
     <div id="right"></div>
   </div>
+
   <script>
-document.querySelector("#j").addEventListener("click",function(){
-  closeBtns();
+    document.querySelector("#j").addEventListener("click", function () {
+      closeBtns();
+      document.querySelector("#h").style.display = "initial";
+    });
 
-  document.querySelector("#h").style.display="initial"
-})
-document.querySelector("#A").addEventListener("click",function(){
-  closeBtns();
+    document.querySelector("#A").addEventListener("click", function () {
+      closeBtns();
+      document.querySelector("#A1").style.display = "initial";
+    });
 
-  document.querySelector("#A1").style.display="initial"
-})
-const closeBtns = ()=>{
-    document.querySelector("#h").style.display = "none";
-    document.querySelector("#A1").style.display = "none";
-}
+    document.querySelector("#toggle-mode").addEventListener("click", function () {
+      toggleDarkMode();
+      updateButtonStyle();
+    });
+
+    const closeBtns = () => {
+      document.querySelector("#h").style.display = "none";
+      document.querySelector("#A1").style.display = "none";
+    };
+
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode");
+    }
+
+    function updateButtonStyle() {
+      const button = document.getElementById("toggle-mode");
+      const body = document.body;
+
+      if (body.classList.contains("dark-mode")) {
+        button.classList.remove("light-mode");
+        button.classList.add("dark-mode");
+      } else {
+        button.classList.remove("dark-mode");
+        button.classList.add("light-mode");
+      }
+    }
   </script>
 </body>
 </html>

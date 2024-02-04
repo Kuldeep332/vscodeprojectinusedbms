@@ -67,3 +67,8 @@ router.get(`/abcd1`,function(req,res){
     res.render("newpage")
   })
 })
+router.post('/filesave/:filename', function (req, res) {
+  fs.writeFile(`./${folder}/${req.params.filename}`, req.body.filedata, function(err){
+    res.redirect("back");
+  })
+});
